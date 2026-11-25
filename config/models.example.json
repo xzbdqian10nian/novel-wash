@@ -1,0 +1,116 @@
+{
+  "providers": {
+    "default": {
+      "format": "openai",
+      "base_url_env": "NOVEL_WASH_BASE_URL",
+      "base_url": "https://your-openai-compatible-gateway.example/v1",
+      "api_key_envs": ["NOVEL_WASH_API_KEY", "OPENAI_API_KEY"],
+      "rpm_limit": 30.0,
+      "pool_rpm_limit": 60.0,
+      "max_concurrency": 4
+    },
+    "anthropic": {
+      "format": "anthropic",
+      "base_url_env": "ANTHROPIC_BASE_URL",
+      "base_url": "https://api.anthropic.com",
+      "api_key_envs": ["ANTHROPIC_API_KEY"],
+      "rpm_limit": 20.0,
+      "pool_rpm_limit": 40.0,
+      "max_concurrency": 4
+    },
+    "gemini": {
+      "format": "gemini",
+      "base_url_env": "GEMINI_BASE_URL",
+      "base_url": "https://generativelanguage.googleapis.com",
+      "api_key_envs": ["GEMINI_API_KEY", "GOOGLE_API_KEY"],
+      "rpm_limit": 20.0,
+      "pool_rpm_limit": 40.0,
+      "max_concurrency": 4
+    },
+    "local": {
+      "format": "openai",
+      "base_url": "http://localhost:11434/v1",
+      "api_key": "ollama",
+      "rpm_limit": 60.0,
+      "pool_rpm_limit": 60.0,
+      "max_concurrency": 1
+    }
+  },
+  "models": {
+    "minimax-m3.1-flash": {
+      "enabled": true,
+      "family": "minimax",
+      "provider": "default",
+      "reasoning_effort": "none",
+      "max_tokens": 8192,
+      "temperature": 0,
+      "notes": "Tested primary pick: high stability and low refusal on romance/adult web fiction"
+    },
+    "glm-5.3-flash": {
+      "enabled": true,
+      "family": "glm",
+      "provider": "default",
+      "reasoning_effort": "low",
+      "max_tokens": 8192,
+      "temperature": 0,
+      "notes": "Tested secondary pick: highest single-model precision (0.9657) in M0 benchmark"
+    },
+    "deepseek-v4.1-flash-1017": {
+      "enabled": true,
+      "family": "deepseek",
+      "provider": "default",
+      "reasoning_effort": "none",
+      "max_tokens": 4096,
+      "temperature": 0,
+      "notes": "Tested fast non-reasoning pick: highest recall (0.9942); pair with Tier-C secondary"
+    },
+    "deepseek-v4.1-flash": {
+      "enabled": true,
+      "family": "deepseek",
+      "provider": "default",
+      "reasoning_effort": "none",
+      "max_tokens": 4096,
+      "temperature": 0
+    },
+    "hy4-preview": {
+      "enabled": true,
+      "family": "hunyuan",
+      "provider": "default",
+      "reasoning_effort": "none",
+      "max_tokens": 4096,
+      "temperature": 0
+    },
+    "hy3": {
+      "enabled": true,
+      "family": "hunyuan",
+      "provider": "default",
+      "max_tokens": 4096,
+      "temperature": 0
+    }
+  },
+  "pools": {
+    "primary": [
+      "default/minimax-m3.1-flash",
+      "default/deepseek-v4.1-flash-1017",
+      "default/glm-5.3-flash"
+    ],
+    "secondary": [
+      "default/glm-5.3-flash",
+      "default/minimax-m3.1-flash",
+      "default/deepseek-v4.1-flash-1017",
+      "default/hy4-preview"
+    ],
+    "low_censorship": [
+      "default/minimax-m3.1-flash",
+      "default/deepseek-v4.1-flash-1017",
+      "default/deepseek-v4.1-flash"
+    ]
+  },
+  "default_routing": {
+    "primary": "minimax-m3.1-flash",
+    "secondary": "glm-5.3-flash",
+    "arbitrator": "deepseek-v4.1-flash-1017",
+    "pua_solver": "hy4-preview",
+    "harmony_filler": "deepseek-v4.1-flash-1017"
+  }
+}
