@@ -1,0 +1,23 @@
+{
+  "books": [
+    {
+      "key": "sample_novel",
+      "category": "dirty",
+      "path": "/path/to/your/novel.txt",
+      "use_model": true,
+      "harmony_llm": false,
+      "group": null
+    },
+    {
+      "key": "clean_novel",
+      "category": "clean",
+      "path": "/path/to/your/clean_novel.txt",
+      "use_model": false,
+      "harmony_llm": false,
+      "group": null
+    }
+  ],
+  "epubs": [
+    "/path/to/your/broken_book.epub"
+  ]
+}
