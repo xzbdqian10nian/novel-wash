@@ -1,0 +1,197 @@
+{
+  "code_layer": {
+    "soup_clear": "11/11",
+    "hard_neg_untouched": "16/16"
+  },
+  "single_models": {
+    "deepseek-v4.1-flash-1017": {
+      "preferred_group": "standard",
+      "elapsed_s": 31.03,
+      "cost_cny": 0.000505,
+      "json_first_pass_batches": "3/3",
+      "tp": 171,
+      "fp": 38,
+      "fn": 1,
+      "tn": 50,
+      "tier_c_tp": 38,
+      "tier_c_fp": 38,
+      "precision": 0.8182,
+      "recall": 0.9942,
+      "f1": 0.8976,
+      "false_del_rate": 0.4318
+    },
+    "glm-5.3-flash": {
+      "preferred_group": "standard",
+      "elapsed_s": 72.71,
+      "cost_cny": 0.000443,
+      "json_first_pass_batches": "3/3",
+      "tp": 169,
+      "fp": 6,
+      "fn": 3,
+      "tn": 82,
+      "tier_c_tp": 36,
+      "tier_c_fp": 6,
+      "precision": 0.9657,
+      "recall": 0.9826,
+      "f1": 0.9741,
+      "false_del_rate": 0.0682
+    },
+    "minimax-m3.1-flash": {
+      "preferred_group": "dedicated",
+      "elapsed_s": 54.17,
+      "cost_cny": 0.002619,
+      "json_first_pass_batches": "3/3",
+      "tp": 161,
+      "fp": 7,
+      "fn": 11,
+      "tn": 81,
+      "tier_c_tp": 31,
+      "tier_c_fp": 7,
+      "precision": 0.9583,
+      "recall": 0.936,
+      "f1": 0.9471,
+      "false_del_rate": 0.0795
+    },
+    "hy4-preview": {
+      "preferred_group": "standard",
+      "elapsed_s": 30.54,
+      "cost_cny": 0.001255,
+      "json_first_pass_batches": "3/3",
+      "tp": 164,
+      "fp": 15,
+      "fn": 8,
+      "tn": 73,
+      "tier_c_tp": 34,
+      "tier_c_fp": 15,
+      "precision": 0.9162,
+      "recall": 0.9535,
+      "f1": 0.9345,
+      "false_del_rate": 0.1705
+    }
+  },
+  "consensus_pairs": {
+    "deepseek-v4.1-flash-1017+glm-5.3-flash": {
+      "tp": 169,
+      "fp": 6,
+      "fn": 3,
+      "tn": 82,
+      "tier_c_review": 34,
+      "precision": 0.9657,
+      "recall": 0.9826,
+      "f1": 0.9741
+    },
+    "deepseek-v4.1-flash-1017+minimax-m3.1-flash": {
+      "tp": 164,
+      "fp": 5,
+      "fn": 8,
+      "tn": 83,
+      "tier_c_review": 40,
+      "precision": 0.9704,
+      "recall": 0.9535,
+      "f1": 0.9619
+    },
+    "deepseek-v4.1-flash-1017+hy4-preview": {
+      "tp": 167,
+      "fp": 12,
+      "fn": 5,
+      "tn": 76,
+      "tier_c_review": 30,
+      "precision": 0.933,
+      "recall": 0.9709,
+      "f1": 0.9516
+    },
+    "hy4-preview+glm-5.3-flash": {
+      "tp": 162,
+      "fp": 6,
+      "fn": 10,
+      "tn": 82,
+      "tier_c_review": 11,
+      "precision": 0.9643,
+      "recall": 0.9419,
+      "f1": 0.9529
+    },
+    "hy4-preview+minimax-m3.1-flash": {
+      "tp": 158,
+      "fp": 6,
+      "fn": 14,
+      "tn": 82,
+      "tier_c_review": 15,
+      "precision": 0.9634,
+      "recall": 0.9186,
+      "f1": 0.9405
+    },
+    "hy4-preview+deepseek-v4.1-flash-1017": {
+      "tp": 164,
+      "fp": 12,
+      "fn": 8,
+      "tn": 76,
+      "tier_c_review": 3,
+      "precision": 0.9318,
+      "recall": 0.9535,
+      "f1": 0.9425
+    },
+    "minimax-m3.1-flash+glm-5.3-flash": {
+      "tp": 161,
+      "fp": 3,
+      "fn": 11,
+      "tn": 85,
+      "tier_c_review": 4,
+      "precision": 0.9817,
+      "recall": 0.936,
+      "f1": 0.9583
+    },
+    "minimax-m3.1-flash+deepseek-v4.1-flash-1017": {
+      "tp": 161,
+      "fp": 5,
+      "fn": 11,
+      "tn": 83,
+      "tier_c_review": 2,
+      "precision": 0.9699,
+      "recall": 0.936,
+      "f1": 0.9527
+    }
+  },
+  "ledger": {
+    "calls": 12,
+    "fallbacks": 0,
+    "total_cost_cny": 0.004822,
+    "by_route": {
+      "standard/deepseek-v4.1-flash-1017": {
+        "calls": 3,
+        "prompt_tokens": 4039,
+        "cached_tokens": 0,
+        "completion_tokens": 1097,
+        "reasoning_tokens": 0,
+        "cost_cny": 0.000505,
+        "latency_s": 15.532
+      },
+      "standard/glm-5.3-flash": {
+        "calls": 3,
+        "prompt_tokens": 4110,
+        "cached_tokens": 0,
+        "completion_tokens": 4091,
+        "reasoning_tokens": 2663,
+        "cost_cny": 0.000443,
+        "latency_s": 63.731
+      },
+      "dedicated/minimax-m3.1-flash": {
+        "calls": 3,
+        "prompt_tokens": 4440,
+        "cached_tokens": 384,
+        "completion_tokens": 7162,
+        "reasoning_tokens": 6410,
+        "cost_cny": 0.002619,
+        "latency_s": 54.169
+      },
+      "standard/hy4-preview": {
+        "calls": 3,
+        "prompt_tokens": 4168,
+        "cached_tokens": 0,
+        "completion_tokens": 936,
+        "reasoning_tokens": 0,
+        "cost_cny": 0.001255,
+        "latency_s": 16.689
+      }
+    }
+  }
+}
