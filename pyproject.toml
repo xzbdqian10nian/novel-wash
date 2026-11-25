@@ -1,0 +1,43 @@
+[project]
+name = "novel-wash"
+version = "0.1.0"
+description = "High-precision, low-cost Chinese web novel cleaning, repair, and EPUB packaging pipeline"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Tank"}]
+keywords = ["novel", "epub", "text-cleaning", "chinese", "llm"]
+requires-python = ">=3.10"
+dependencies = [
+    "charset-normalizer>=3.3",
+    "httpx>=0.27",
+    "jieba>=0.42",
+    "opencc-python-reimplemented>=0.1.7",
+    "pypinyin>=0.51",
+]
+
+[project.urls]
+Homepage = "https://github.com/xzbdqian10nian/novel-wash"
+Repository = "https://github.com/xzbdqian10nian/novel-wash"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+novel-wash = "novel_wash.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+novel_wash = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+filterwarnings = ["ignore::SyntaxWarning:jieba.*"]

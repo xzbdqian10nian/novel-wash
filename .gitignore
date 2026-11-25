@@ -1,0 +1,22 @@
+# Secrets, env & local private configs
+.env
+.env.*
+!.env.example
+config/models.json
+config/policy_terms.json
+config/corpus.json
+benchmarks/gold_specs*.json
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Outputs, caches & runtime checkpoints
+runs/
+output/
+cache/
+benchmarks/gold_set.jsonl
+.DS_Store
